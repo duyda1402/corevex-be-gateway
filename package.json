@@ -1,0 +1,22 @@
+{
+  "name": "corevex-be-gateway",
+  "version": "1.0.0",
+  "description": "gateway api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duyda1402/corevex-be-gateway.git"
+  },
+  "keywords": [
+    "gateway"
+  ],
+  "author": "dodyy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duyda1402/corevex-be-gateway/issues"
+  },
+  "homepage": "https://github.com/duyda1402/corevex-be-gateway#readme"
+}

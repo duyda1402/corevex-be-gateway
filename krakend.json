@@ -1,0 +1,73 @@
+{
+     "$schema": "https://www.krakend.io/schema/krakend.json",
+     "version": 3,
+     "name": "KrakenD - API Gateway",
+     "timeout": "160s",
+     "cache_ttl": "300s",
+     "output_encoding": "json",
+     "endpoints": [
+          {
+               "endpoint": "/v1/auth/login",
+               "method": "POST",
+               "output_encoding": "no-op",
+               "input_headers": [
+                    "bc-sign",
+                    "bc-nonce",
+                    "Content-Type",
+                    "x-bc-payload",
+                    "di",
+                    "dt",
+                    "dm",
+                    "ov",
+                    "ct",
+                    "lang",
+                    "x-forwarded-for"
+               ],
+               "backend": [
+                    {
+                         "url_pattern": "/auth/login",
+                         "encoding": "no-op",
+                         "sd": "static",
+                         "method": "POST",
+                         "host": [
+                              "http://corevex-be-account:3011"
+                         ],
+                         "disable_host_sanitize": true
+                    }
+               ]
+          },
+          {
+               "endpoint": "/v1/verify/union-id/{unionId}",
+               "method": "GET",
+               "output_encoding": "no-op",
+               "backend": [
+                    {
+                         "url_pattern": "/verify/union-id/{unionId}",
+                         "encoding": "no-op",
+                         "sd": "static",
+                         "method": "GET",
+                         "host": [
+                              "http://corevex-be-account:3011"
+                         ],
+                         "disable_host_sanitize": true
+                    }
+               ],
+               "input_headers": [
+                    "Authorization",
+                    "Content-Type"
+               ],
+               "extra_config": {
+                    "auth/validator": {
+                         "alg": "ES256",
+                         "jwk_url": "http://corevex-be-account:3011/auth/openid-connect/certs",
+                         "issuer": "Vortex",
+                         "cache": true,
+                         "disable_jwk_security": true,
+                         "roles": [
+                              "user-vortex"
+                         ]
+                    }
+               }
+          }
+     ]
+}
