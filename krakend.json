@@ -30,7 +30,7 @@
                          "sd": "static",
                          "method": "POST",
                          "host": [
-                              "http://corevex-be-account:3011"
+                              "http://vortexcore-be-account:3011"
                          ],
                          "disable_host_sanitize": true
                     }
@@ -47,7 +47,7 @@
                          "sd": "static",
                          "method": "GET",
                          "host": [
-                              "http://corevex-be-account:3011"
+                              "http://vortexcore-be-account:3011"
                          ],
                          "disable_host_sanitize": true
                     }
@@ -59,7 +59,7 @@
                "extra_config": {
                     "auth/validator": {
                          "alg": "ES256",
-                         "jwk_url": "http://corevex-be-account:3011/auth/openid-connect/certs",
+                         "jwk_url": "http://vortexcore-be-account:3011/auth/openid-connect/certs",
                          "issuer": "Vortex",
                          "cache": true,
                          "disable_jwk_security": true,
