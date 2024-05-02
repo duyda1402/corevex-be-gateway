@@ -1,9 +1,20 @@
 version: "3.8"
 services:
-  krakend:
+  vex-gateway:
     image: devopsfaith/krakend:latest
+    container_name: corevex-be-gateway
     volumes:
       - ".:/etc/krakend"
     ports:
       - "8080:8080"
+    networks:
+      - vex-network
+    # depends_on:
+    #   - vex-redis
+    #   - vex-postgres
     command: ["run", "-dc", "krakend.json"]
+    restart: always
+
+networks:
+  vex-network:
+    driver: bridge
